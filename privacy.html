@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Politique de confidentialité de WorldScope.">
+  <title>Politique de confidentialité — WorldScope</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111f;
+      --panel: #111d30;
+      --gold: #e8bd67;
+      --text: #f1f5fb;
+      --muted: #b9c4d5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+    }
+    header {
+      padding: 22px 6%;
+      border-bottom: 1px solid #26354a;
+    }
+    header a { color: var(--gold); text-decoration: none; }
+    main { max-width: 900px; margin: 35px auto; padding: 0 20px; }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #26354a;
+      border-radius: 16px;
+      padding: clamp(20px, 5vw, 42px);
+    }
+    h1, h2 { color: var(--gold); line-height: 1.4; }
+    h1 { margin-top: 0; }
+    p, li { color: var(--muted); }
+    select {
+      background: #17263c;
+      color: white;
+      border: 1px solid #465872;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    footer { text-align: center; padding: 25px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">← WorldScope</a>
+  </header>
+
+  <main>
+    <div style="margin-bottom:20px">
+      <label for="language" id="languageLabel">Langue :</label>
+      <select id="language">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
+
+    <article class="panel">
+      <h1 id="title">Politique de confidentialité</h1>
+      <p id="updated">Dernière mise à jour : 28 octobre 2026</p>
+
+      <h2 id="h1">1. Présentation</h2>
+      <p id="p1">WorldScope est un site d'information qui présente des actualités et des liens vers des sources externes. Cette politique explique comment les informations peuvent être utilisées lorsque vous visitez le site.</p>
+
+      <h2 id="h2">2. Données et journaux techniques</h2>
+      <p id="p2">L'hébergeur du site peut traiter certaines données techniques nécessaires au fonctionnement et à la sécurité du service, comme l'adresse IP, le navigateur utilisé et les journaux de connexion. Nous ne demandons pas de créer un compte pour consulter les actualités.</p>
+
+      <h2 id="h3">3. Cookies et stockage local</h2>
+      <p id="p3">Le site ou ses prestataires peuvent utiliser des cookies ou des technologies similaires pour assurer son fonctionnement, mémoriser les préférences ou mesurer l'audience. Les choix de langue peuvent être enregistrés dans le navigateur. Vous pouvez gérer les cookies dans les paramètres de votre navigateur.</p>
+
+      <h2 id="h4">4. Publicité et Google AdSense</h2>
+      <p id="p4">Si des annonces Google sont activées sur ce site, Google et ses partenaires peuvent utiliser des cookies ou des identifiants similaires pour diffuser, mesurer et personnaliser les annonces, selon vos paramètres, votre région et votre consentement lorsque celui-ci est requis. Les pratiques publicitaires applicables dépendent des services effectivement activés. Pour en savoir plus, consultez la politique de confidentialité de Google : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
+
+      <h2 id="h5">5. Sources externes</h2>
+      <p id="p5">WorldScope peut afficher des titres, des résumés, des images et des liens provenant de sources d'actualité externes, notamment France 24. Lorsque vous ouvrez un lien externe, vous quittez WorldScope et le traitement de vos données relève de la politique du site visité. Les contenus externes restent soumis aux droits de leurs éditeurs.</p>
+
+      <h2 id="h6">6. Conservation et sécurité</h2>
+      <p id="p6">Les données techniques sont conservées selon les règles de l'hébergeur et des prestataires concernés. Nous prenons des mesures raisonnables pour protéger le site, sans pouvoir garantir une sécurité absolue sur Internet.</p>
+
+      <h2 id="h7">7. Vos choix et vos droits</h2>
+      <p id="p7">Vous pouvez gérer les cookies dans votre navigateur et utiliser les paramètres de confidentialité proposés par les services concernés. Selon votre pays, vous pouvez disposer de droits d'accès, de rectification, d'effacement ou d'opposition concernant certaines données personnelles. Les coordonnées de contact seront ajoutées lorsque le responsable du site aura choisi une adresse dédiée.</p>
+
+      <h2 id="h8">8. Modifications</h2>
+      <p id="p8">Cette politique pourra être mise à jour si les fonctionnalités ou les services du site changent. La date de mise à jour sera indiquée en haut de cette page.</p>
+    </article>
+  </main>
+
+  <footer>© 2026 WorldScope</footer>
+
+  <script>
+    const translations = {
+      fr: {
+        dir:"ltr", languageLabel:"Langue :", title:"Politique de confidentialité",
+        updated:"Dernière mise à jour : 28 octobre 2026",
+        h1:"1. Présentation", p1:"WorldScope est un site d'information qui présente des actualités et des liens vers des sources externes. Cette politique explique comment les informations peuvent être utilisées lorsque vous visitez le site.",
+        h2:"2. Données et journaux techniques", p2:"L'hébergeur du site peut traiter certaines données techniques nécessaires au fonctionnement et à la sécurité du service, comme l'adresse IP, le navigateur utilisé et les journaux de connexion. Nous ne demandons pas de créer un compte pour consulter les actualités.",
+        h3:"3. Cookies et stockage local", p3:"Le site ou ses prestataires peuvent utiliser des cookies ou des technologies similaires pour assurer son fonctionnement, mémoriser les préférences ou mesurer l'audience. Les choix de langue peuvent être enregistrés dans le navigateur. Vous pouvez gérer les cookies dans les paramètres de votre navigateur.",
+        h4:"4. Publicité et Google AdSense", p4:"Si des annonces Google sont activées sur ce site, Google et ses partenaires peuvent utiliser des cookies ou des identifiants similaires pour diffuser, mesurer et personnaliser les annonces, selon vos paramètres, votre région et votre consentement lorsque celui-ci est requis. Les pratiques publicitaires applicables dépendent des services effectivement activés. Pour en savoir plus, consultez la politique de confidentialité de Google :",
+        h5:"5. Sources externes", p5:"WorldScope peut afficher des titres, des résumés, des images et des liens provenant de sources d'actualité externes, notamment France 24. Lorsque vous ouvrez un lien externe, vous quittez WorldScope et le traitement de vos données relève de la politique du site visité. Les contenus externes restent soumis aux droits de leurs éditeurs.",
+        h6:"6. Conservation et sécurité", p6:"Les données techniques sont conservées selon les règles de l'hébergeur et des prestataires concernés. Nous prenons des mesures raisonnables pour protéger le site, sans pouvoir garantir une sécurité absolue sur Internet.",
+        h7:"7. Vos choix et vos droits", p7:"Vous pouvez gérer les cookies dans votre navigateur et utiliser les paramètres de confidentialité proposés par les services concernés. Selon votre pays, vous pouvez disposer de droits d'accès, de rectification, d'effacement ou d'opposition concernant certaines données personnelles. Les coordonnées de contact seront ajoutées lorsque le responsable du site aura choisi une adresse dédiée.",
+        h8:"8. Modifications", p8:"Cette politique pourra être mise à jour si les fonctionnalités ou les services du site changent. La date de mise à jour sera indiquée en haut de cette page."
+      },
+      en: {
+        dir:"ltr", languageLabel:"Language:", title:"Privacy Policy",
+        updated:"Last updated: October 28, 2026",
+        h1:"1. Introduction", p1:"WorldScope is an information website that presents news and links to external sources. This policy explains how information may be used when you visit the site.",
+        h2:"2. Data and technical logs", p2:"The website host may process technical data needed to operate and secure the service, such as IP address, browser information and connection logs. You do not need to create an account to read the news.",
+        h3:"3. Cookies and local storage", p3:"The site or its service providers may use cookies or similar technologies to operate the site, remember preferences or measure audience. Language preferences may be stored in your browser. You can manage cookies through your browser settings.",
+        h4:"4. Advertising and Google AdSense", p4:"If Google ads are enabled on this site, Google and its partners may use cookies or similar identifiers to serve, measure and personalize ads, depending on your settings, region and consent where required. Applicable advertising practices depend on the services actually enabled. For more information, read Google's Privacy Policy:",
+        h5:"5. External sources", p5:"WorldScope may display headlines, summaries, images and links from external news sources, including France 24. When you open an external link, you leave WorldScope and the visited site's policy governs its handling of your data. External content remains subject to its publisher's rights.",
+        h6:"6. Retention and security", p6:"Technical data is retained according to the rules of the host and relevant service providers. Reasonable measures are taken to protect the site, but absolute security on the internet cannot be guaranteed.",
+        h7:"7. Your choices and rights", p7:"You can manage cookies in your browser and use privacy controls provided by relevant services. Depending on your country, you may have rights to access, correct, delete or object to the processing of certain personal data. Contact details will be added when the site operator chooses a dedicated address.",
+        h8:"8. Changes", p8:"This policy may be updated if the site's features or services change. The update date will appear at the top of this page."
+      },
+      ar: {
+        dir:"rtl", languageLabel:"اللغة:", title:"سياسة الخصوصية",
+        updated:"آخر تحديث: 28 أكتوبر 2026",
+        h1:"1. مقدمة", p1:"WorldScope موقع معلومات يعرض الأخبار وروابط إلى مصادر خارجية. توضح هذه السياسة كيفية استخدام المعلومات عند زيارة الموقع.",
+        h2:"2. البيانات والسجلات التقنية", p2:"قد يعالج مزود استضافة الموقع بعض البيانات التقنية اللازمة لتشغيل الخدمة وحمايتها، مثل عنوان IP ومعلومات المتصفح وسجلات الاتصال. لا نطلب إنشاء حساب لقراءة الأخبار.",
+        h3:"3. ملفات تعريف الارتباط والتخزين المحلي", p3:"قد يستخدم الموقع أو مزودو خدماته ملفات تعريف الارتباط أو تقنيات مشابهة لتشغيل الموقع وحفظ التفضيلات وقياس الزيارات. قد تُحفظ اللغة المختارة في المتصفح. يمكنك إدارة ملفات تعريف الارتباط من إعدادات المتصفح.",
+        h4:"4. الإعلانات وGoogle AdSense", p4:"إذا تم تفعيل إعلانات Google على هذا الموقع، فقد تستخدم Google وشركاؤها ملفات تعريف الارتباط أو معرّفات مشابهة لعرض الإعلانات وقياسها وتخصيصها وفقًا لإعداداتك ومنطقتك وموافقتك عند الحاجة. تعتمد الممارسات الإعلانية على الخدمات التي يتم تفعيلها فعليًا. للمزيد، راجع سياسة خصوصية Google:",
+        h5:"5. المصادر الخارجية", p5:"قد يعرض WorldScope عناوين الأخبار وملخصاتها وصورها وروابط من مصادر إخبارية خارجية، بما فيها France 24. عند فتح رابط خارجي، تغادر WorldScope وتخضع معالجة بياناتك لسياسة الموقع الذي تزوره. وتظل حقوق المحتوى الخارجي محفوظة لناشريه.",
+        h6:"6. الاحتفاظ بالبيانات والأمان", p6:"يتم الاحتفاظ بالبيانات التقنية وفقًا لقواعد الاستضافة ومزودي الخدمات المعنيين. نتخذ تدابير معقولة لحماية الموقع، لكن لا يمكن ضمان أمان مطلق على الإنترنت.",
+        h7:"7. خياراتك وحقوقك", p7:"يمكنك إدارة ملفات تعريف الارتباط من المتصفح واستخدام إعدادات الخصوصية التي توفرها الخدمات المعنية. وقد تتمتع، وفقًا لبلدك، بحقوق الوصول إلى بعض البيانات الشخصية وتصحيحها أو حذفها أو الاعتراض على معالجتها. ستُضاف معلومات الاتصال عندما يختار مسؤول الموقع عنوانًا مخصصًا.",
+        h8:"8. التعديلات", p8:"قد يتم تحديث هذه السياسة عند تغيير وظائف الموقع أو خدماته. سيظهر تاريخ التحديث في أعلى هذه الصفحة."
+      }
+    };
+
+    const ids = ["title","updated","h1","p1","h2","p2","h3","p3","h4","p4","h5","p5","h6","p6","h7","p7","h8","p8"];
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.fr;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = t.dir;
+      document.getElementById("languageLabel").textContent = t.languageLabel;
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = t[id];
+      });
+      document.getElementById("p4").append(" ");
+      const link = document.createElement("a");
+      link.href = "https://policies.google.com/privacy";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "policies.google.com/privacy";
+      document.getElementById("p4").appendChild(link);
+    }
+
+    document.getElementById("language").addEventListener("change", e => setLanguage(e.target.value));
+    setLanguage("fr");
+  </script>
+</body>
+</html>
