@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez WorldScope, votre espace d'information sur l'actualité internationale.">
+  <title>À propos de WorldScope</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101e30;
+      --gold: #d8b45a;
+      --text: #f3f5f8;
+      --muted: #b7c2d0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    header {
+      padding: 22px 6%;
+      border-bottom: 1px solid #26364a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo {
+      color: var(--gold);
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { color: var(--text); text-decoration: none; }
+    nav a:hover { color: var(--gold); }
+    select {
+      background: var(--panel);
+      color: white;
+      border: 1px solid var(--gold);
+      padding: 9px;
+      border-radius: 6px;
+    }
+    main {
+      max-width: 900px;
+      margin: 55px auto;
+      padding: 0 22px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #26364a;
+      border-radius: 16px;
+      padding: 35px;
+    }
+    h1, h2 { color: var(--gold); line-height: 1.4; }
+    h1 { font-size: clamp(30px, 5vw, 43px); }
+    p, li { color: var(--muted); }
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #26364a;
+      color: var(--muted);
+    }
+    footer a { color: var(--gold); }
+    @media (max-width: 600px) {
+      header { padding: 18px; }
+      .panel { padding: 22px; }
+      main { margin: 30px auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">WorldScope</a>
+    <nav>
+      <a href="index.html" data-i18n="home">Accueil</a>
+      <a href="index.html#news" data-i18n="news">Actualités</a>
+      <a href="about.html" data-i18n="about">À propos</a>
+      <a href="privacy.html" data-i18n="privacy">Confidentialité</a>
+    </nav>
+    <select id="language" aria-label="Choisir la langue">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </header>
+
+  <main>
+    <article class="panel">
+      <h1 data-i18n="title">À propos de WorldScope</h1>
+      <p data-i18n="intro">Bienvenue sur WorldScope, un espace consacré à l'actualité internationale et aux événements qui façonnent notre monde.</p>
+
+      <h2 data-i18n="missionTitle">Notre mission</h2>
+      <p data-i18n="mission">Notre objectif est d'aider les lecteurs à découvrir les grands sujets d'actualité, à suivre les événements importants et à mieux comprendre ce qui se passe dans différentes régions du monde.</p>
+
+      <h2 data-i18n="contentTitle">Notre contenu</h2>
+      <p data-i18n="content">WorldScope rassemble des informations et des liens vers des sources d'actualité externes. Les articles et contenus provenant d'autres médias restent soumis aux droits et conditions de leurs éditeurs respectifs. Nous encourageons les lecteurs à consulter les sources originales pour davantage de détails et de contexte.</p>
+
+      <h2 data-i18n="languagesTitle">Plusieurs langues</h2>
+      <p data-i18n="languages">Le site est conçu pour être accessible en français, en anglais et en arabe, afin de faciliter l'accès à l'information pour un public plus large.</p>
+
+      <h2 data-i18n="independenceTitle">Indépendance et transparence</h2>
+      <p data-i18n="independence">WorldScope cherche à présenter l'information de manière claire. La présence d'un lien externe ne signifie pas nécessairement que WorldScope approuve le contenu ou les opinions de ce site tiers.</p>
+
+      <h2 data-i18n="contactTitle">Nous contacter</h2>
+      <p data-i18n="contact">Pour toute question concernant WorldScope, consultez notre page de contact lorsqu'elle sera disponible.</p>
+    </article>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> WorldScope</span>
+    <span> · </span>
+    <a href="privacy.html" data-i18n="privacy">Confidentialité</a>
+  </footer>
+
+  <script>
+    const translations = {
+      fr: {
+        home: "Accueil", news: "Actualités", about: "À propos",
+        privacy: "Confidentialité", title: "À propos de WorldScope",
+        intro: "Bienvenue sur WorldScope, un espace consacré à l'actualité internationale et aux événements qui façonnent notre monde.",
+        missionTitle: "Notre mission",
+        mission: "Notre objectif est d'aider les lecteurs à découvrir les grands sujets d'actualité, à suivre les événements importants et à mieux comprendre ce qui se passe dans différentes régions du monde.",
+        contentTitle: "Notre contenu",
+        content: "WorldScope rassemble des informations et des liens vers des sources d'actualité externes. Les articles et contenus provenant d'autres médias restent soumis aux droits et conditions de leurs éditeurs respectifs. Nous encourageons les lecteurs à consulter les sources originales pour davantage de détails et de contexte.",
+        languagesTitle: "Plusieurs langues",
+        languages: "Le site est conçu pour être accessible en français, en anglais et en arabe, afin de faciliter l'accès à l'information pour un public plus large.",
+        independenceTitle: "Indépendance et transparence",
+        independence: "WorldScope cherche à présenter l'information de manière claire. La présence d'un lien externe ne signifie pas nécessairement que WorldScope approuve le contenu ou les opinions de ce site tiers.",
+        contactTitle: "Nous contacter",
+        contact: "Pour toute question concernant WorldScope, consultez notre page de contact lorsqu'elle sera disponible."
+      },
+      en: {
+        home: "Home", news: "News", about: "About",
+        privacy: "Privacy Policy", title: "About WorldScope",
+        intro: "Welcome to WorldScope, a space dedicated to international news and the events shaping our world.",
+        missionTitle: "Our mission",
+        mission: "Our goal is to help readers discover major news topics, follow important events, and better understand what is happening in different regions of the world.",
+        contentTitle: "Our content",
+        content: "WorldScope brings together information and links to external news sources. Articles and content from other media remain subject to their respective publishers' rights and terms. We encourage readers to visit original sources for more detail and context.",
+        languagesTitle: "Multiple languages",
+        languages: "The site is designed to be accessible in French, English, and Arabic, helping a wider audience access information.",
+        independenceTitle: "Independence and transparency",
+        independence: "WorldScope aims to present information clearly. An external link does not necessarily mean that WorldScope endorses the content or opinions of that third-party website.",
+        contactTitle: "Contact us",
+        contact: "For questions about WorldScope, please visit our contact page when it becomes available."
+      },
+      ar: {
+        home: "الرئيسية", news: "الأخبار", about: "من نحن",
+        privacy: "سياسة الخصوصية", title: "من نحن — WorldScope",
+        intro: "مرحبًا بكم في WorldScope، مساحة مخصصة للأخبار الدولية والأحداث التي تؤثر في عالمنا.",
+        missionTitle: "مهمتنا",
+        mission: "هدفنا هو مساعدة القراء على اكتشاف أبرز الأخبار ومتابعة الأحداث المهمة وفهم ما يحدث في مناطق مختلفة من العالم.",
+        contentTitle: "محتوانا",
+        content: "يجمع WorldScope المعلومات والروابط إلى مصادر إخبارية خارجية. وتظل المقالات والمحتويات المنشورة لدى وسائل الإعلام الأخرى خاضعة لحقوق وشروط ناشريها. نشجع القراء على زيارة المصادر الأصلية للحصول على مزيد من التفاصيل والسياق.",
+        languagesTitle: "عدة لغات",
+        languages: "صُمم الموقع ليكون متاحًا بالفرنسية والإنجليزية والعربية، لتسهيل وصول جمهور أوسع إلى المعلومات.",
+        independenceTitle: "الاستقلالية والشفافية",
+        independence: "يسعى WorldScope إلى عرض المعلومات بوضوح. ولا يعني وجود رابط خارجي بالضرورة أن WorldScope يؤيد محتوى الموقع الآخر أو آراءه.",
+        contactTitle: "اتصل بنا",
+        contact: "للاستفسارات المتعلقة بـ WorldScope، يرجى زيارة صفحة الاتصال عند توفرها."
+      }
+    };
+
+    const languageSelect = document.getElementById("language");
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.fr;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (dict[key]) element.textContent = dict[key];
+      });
+
+      languageSelect.value = lang;
+      document.title = dict.title;
+    }
+
+    languageSelect.addEventListener("change", event => {
+      setLanguage(event.target.value);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("fr");
+  </script>
+</body>
+</html>
