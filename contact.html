@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez l'équipe WorldScope pour toute question ou remarque.">
+  <title>Contact — WorldScope</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101e30;
+      --gold: #d8b45a;
+      --text: #f3f5f8;
+      --muted: #b7c2d0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    header {
+      padding: 22px 6%;
+      border-bottom: 1px solid #26364a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .logo {
+      color: var(--gold);
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { color: var(--text); text-decoration: none; }
+    nav a:hover { color: var(--gold); }
+    select {
+      background: var(--panel);
+      color: white;
+      border: 1px solid var(--gold);
+      padding: 9px;
+      border-radius: 6px;
+    }
+    main {
+      max-width: 800px;
+      margin: 55px auto;
+      padding: 0 22px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #26364a;
+      border-radius: 16px;
+      padding: 35px;
+    }
+    h1, h2 { color: var(--gold); line-height: 1.4; }
+    h1 { font-size: clamp(30px, 5vw, 43px); }
+    p { color: var(--muted); }
+    .email {
+      display: inline-block;
+      color: var(--bg);
+      background: var(--gold);
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+    .address {
+      color: var(--text);
+      overflow-wrap: anywhere;
+      margin: 18px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #26364a;
+      color: var(--muted);
+    }
+    footer a { color: var(--gold); }
+    @media (max-width: 600px) {
+      header { padding: 18px; }
+      .panel { padding: 22px; }
+      main { margin: 30px auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">WorldScope</a>
+    <nav>
+      <a href="index.html" data-i18n="home">Accueil</a>
+      <a href="index.html#news" data-i18n="news">Actualités</a>
+      <a href="about.html" data-i18n="about">À propos</a>
+      <a href="privacy.html" data-i18n="privacy">Confidentialité</a>
+    </nav>
+    <select id="language" aria-label="Choisir la langue">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h1 data-i18n="title">Contactez WorldScope</h1>
+      <p data-i18n="intro">Une question, une remarque ou une suggestion ? Nous serons heureux de recevoir votre message.</p>
+      <h2 data-i18n="emailTitle">Adresse e-mail</h2>
+      <p data-i18n="emailText">Vous pouvez nous contacter à l'adresse suivante :</p>
+      <p class="address">sabri2027hasneoui@gmail.com</p>
+      <a class="email" href="mailto:sabri2027hasneoui@gmail.com?subject=Contact%20WorldScope" data-i18n="button">Envoyer un e-mail</a>
+      <p data-i18n="note">En cliquant sur ce bouton, votre application de messagerie s'ouvrira pour préparer un message. Vous pouvez aussi copier l'adresse ci-dessus.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> WorldScope · </span>
+    <a href="privacy.html" data-i18n="privacy">Confidentialité</a>
+  </footer>
+
+  <script>
+    const translations = {
+      fr: {
+        home: "Accueil",
+        news: "Actualités",
+        about: "À propos",
+        privacy: "Confidentialité",
+        title: "Contactez WorldScope",
+        intro: "Une question, une remarque ou une suggestion ? Nous serons heureux de recevoir votre message.",
+        emailTitle: "Adresse e-mail",
+        emailText: "Vous pouvez nous contacter à l'adresse suivante :",
+        button: "Envoyer un e-mail",
+        note: "En cliquant sur ce bouton, votre application de messagerie s'ouvrira pour préparer un message. Vous pouvez aussi copier l'adresse ci-dessus."
+      },
+      en: {
+        home: "Home",
+        news: "News",
+        about: "About",
+        privacy: "Privacy Policy",
+        title: "Contact WorldScope",
+        intro: "Have a question, comment, or suggestion? We would be happy to hear from you.",
+        emailTitle: "Email address",
+        emailText: "You can contact us at the following address:",
+        button: "Send an email",
+        note: "Clicking this button opens your email application to prepare a message. You can also copy the address above."
+      },
+      ar: {
+        home: "الرئيسية",
+        news: "الأخبار",
+        about: "من نحن",
+        privacy: "سياسة الخصوصية",
+        title: "تواصل مع WorldScope",
+        intro: "هل لديك سؤال أو ملاحظة أو اقتراح؟ يسعدنا استقبال رسالتك.",
+        emailTitle: "البريد الإلكتروني",
+        emailText: "يمكنك التواصل معنا عبر العنوان التالي:",
+        button: "إرسال بريد إلكتروني",
+        note: "عند الضغط على هذا الزر، سيفتح تطبيق البريد الإلكتروني لإعداد رسالة. يمكنك أيضًا نسخ العنوان أعلاه."
+      }
+    };
+
+    const languageSelect = document.getElementById("language");
+
+    function setLanguage(lang) {
+      const dict = translations[lang] || translations.fr;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (dict[key]) element.textContent = dict[key];
+      });
+
+      languageSelect.value = lang;
+      document.title = dict.title + " — WorldScope";
+    }
+
+    languageSelect.addEventListener("change", event => {
+      setLanguage(event.target.value);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLanguage("fr");
+  </script>
+</body>
+</html>
