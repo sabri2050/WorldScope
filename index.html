@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorldScope — L'actualité mondiale</title>
+
+<style>
+:root {
+  --bg: #07111f;
+  --panel: #101e30;
+  --panel-light: #17283d;
+  --gold: #e6bd62;
+  --text: #f4f6fa;
+  --muted: #a8b5c7;
+  --border: rgba(230, 189, 98, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7, 17, 31, 0.96);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.navbar {
+  max-width: 1250px;
+  margin: auto;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+#language {
+  background: var(--panel);
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.hero {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(5, 13, 25, 0.96) 0%, rgba(5, 13, 25, 0.7) 52%, rgba(5, 13, 25, 0.25) 100%),
+    linear-gradient(0deg, var(--bg), transparent 35%),
+    url("https://images-assets.nasa.gov/image/iss073e0880390/iss073e0880390~orig.jpg")
+    center 45% / cover no-repeat;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1250px;
+  margin: auto;
+  padding: 65px 22px 80px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.08;
+  max-width: 750px;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: #d1d9e5;
+  font-size: 17px;
+  max-width: 620px;
+  margin-bottom: 28px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 13px 22px;
+  background: var(--gold);
+  color: #111827;
+  border-radius: 7px;
+  font-weight: bold;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.hero-button:hover {
+  background: #f2d58c;
+  transform: translateY(-2px);
+}
+
+main {
+  max-width: 1250px;
+  margin: auto;
+  padding: 35px 22px 65px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  font-size: 27px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.gold-line {
+  width: 55px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 9px;
+  border-radius: 5px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+#searchInput {
+  flex: 1;
+  min-width: 220px;
+  background: var(--panel);
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px 15px;
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: var(--gold);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-button {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #101827;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.status-dot {
+  height: 8px;
+  width: 8px;
+  background: #55d69e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(85, 214, 158, 0.6);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.news-card {
+  min-width: 0;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 13px;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border);
+}
+
+.news-image {
+  height: 205px;
+  background: linear-gradient(135deg, #17283d, #253b55);
+  position: relative;
+  overflow: hidden;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.news-card:hover .news-image img {
+  transform: scale(1.04);
+}
+
+.image-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 42px;
+}
+
+.news-content {
+  padding: 18px;
+}
+
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.news-category {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.news-date {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.news-title {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.news-description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 17px;
+}
+
+.read-more {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+.message {
+  grid-column: 1 / -1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 30px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.message strong {
+  color: white;
+  display: block;
+  margin-bottom: 8px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 22px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .news-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 13px 16px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 400px;
+    background-position: center;
+  }
+
+  .hero-content {
+    padding: 55px 18px 65px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 30px 15px 50px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-image {
+    height: 220px;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+
+  .filter-buttons {
+    width: 100%;
+  }
+
+  .filter-button {
+    flex: 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="#" class="logo">WORLD<span>SCOPE</span></a>
+
+    <nav class="nav-links">
+      <a href="#home" data-i18n="navHome">Accueil</a>
+      <a href="#news" data-i18n="navNews">Actualités</a>
+      <a href="#about" data-i18n="navAbout">À propos</a>
+    </nav>
+
+    <select id="language" aria-label="Choisir la langue">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+    </select>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow" data-i18n="eyebrow">L'information sans frontières</div>
+
+    <h1 data-i18n="heroTitle">
+      Comprendre le monde.<br>
+      <span>Suivre l'essentiel.</span>
+    </h1>
+
+    <p data-i18n="heroDescription">
+      Les actualités internationales, les grands événements et les informations
+      importantes du monde réunis au même endroit.
+    </p>
+
+    <a href="#news" class="hero-button" data-i18n="heroButton">
+      Découvrir les actualités
+    </a>
+  </div>
+</section>
+
+<main id="news">
+  <div class="section-heading">
+    <div>
+      <h2 data-i18n="newsTitle">Actualités du monde</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <p data-i18n="newsSubtitle">Les dernières informations internationales</p>
+  </div>
+
+  <div class="toolbar">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Rechercher une actualité..."
+      data-i18n-placeholder="searchPlaceholder"
+    >
+
+    <div class="filter-buttons">
+      <button class="filter-button active" data-region="all" data-i18n="all">
+        Tout
+      </button>
+      <button class="filter-button" data-region="world" data-i18n="world">
+        Monde
+      </button>
+      <button class="filter-button" data-region="europe" data-i18n="europe">
+        Europe
+      </button>
+      <button class="filter-button" data-region="africa" data-i18n="africa">
+        Afrique
+      </button>
+      <button class="filter-button" data-region="middle-east" data-i18n="middleEast">
+        Moyen-Orient
+      </button>
+    </div>
+  </div>
+
+  <div class="status-line">
+    <span class="status-dot"></span>
+    <span id="statusText" data-i18n="loading">Chargement des actualités...</span>
+  </div>
+
+  <section class="news-grid" id="newsGrid">
+    <div class="message">
+      <strong data-i18n="loadingTitle">Chargement en cours</strong>
+      <span data-i18n="loadingDescription">Veuillez patienter quelques secondes.</span>
+    </div>
+  </section>
+</main>
+
+<footer id="about">
+  <p>© <span id="year"></span> <span>WorldScope</span> — 
+    <span data-i18n="footerText">L'information sans frontières.</span>
+  </p>
+</footer>
+
+<script>
+const translations = {
+  fr: {
+    navHome: "Accueil",
+    navNews: "Actualités",
+    navAbout: "À propos",
+    eyebrow: "L'information sans frontières",
+    heroTitle: 'Comprendre le monde.<br><span>Suivre l’essentiel.</span>',
+    heroDescription: "Les actualités internationales, les grands événements et les informations importantes du monde réunis au même endroit.",
+    heroButton: "Découvrir les actualités",
+    newsTitle: "Actualités du monde",
+    newsSubtitle: "Les dernières informations internationales",
+    searchPlaceholder: "Rechercher une actualité...",
+    all: "Tout",
+    world: "Monde",
+    europe: "Europe",
+    africa: "Afrique",
+    middleEast: "Moyen-Orient",
+    loading: "Chargement des actualités...",
+    loadingTitle: "Chargement en cours",
+    loadingDescription: "Veuillez patienter quelques secondes.",
+    noNewsTitle: "Aucune actualité trouvée",
+    noNewsDescription: "Essayez une autre recherche ou une autre catégorie.",
+    errorTitle: "Impossible de charger les actualités",
+    errorDescription: "Vérifiez que le serveur WorldScope fonctionne et réessayez.",
+    readMore: "Lire l'article →",
+    source: "Source",
+    footerText: "L'information sans frontières.",
+    results: "actualité(s) affichée(s)",
+    noImage: "Image indisponible"
+  },
+
+  en: {
+    navHome: "Home",
+    navNews: "News",
+    navAbout: "About",
+    eyebrow: "Information without borders",
+    heroTitle: 'Understand the world.<br><span>Follow what matters.</span>',
+    heroDescription: "International news, major events and important world updates, all in one place.",
+    heroButton: "Explore the news",
+    newsTitle: "World News",
+    newsSubtitle: "The latest international updates",
+    searchPlaceholder: "Search news...",
+    all: "All",
+    world: "World",
+    europe: "Europe",
+    africa: "Africa",
+    middleEast: "Middle East",
+    loading: "Loading news...",
+    loadingTitle: "Loading",
+    loadingDescription: "Please wait a few seconds.",
+    noNewsTitle: "No news found",
+    noNewsDescription: "Try another search or category.",
+    errorTitle: "Unable to load news",
+    errorDescription: "Check that the WorldScope server is running and try again.",
+    readMore: "Read article →",
+    source: "Source",
+    footerText: "Information without borders.",
+    results: "news item(s) displayed",
+    noImage: "Image unavailable"
+  },
+
+  ar: {
+    navHome: "الرئيسية",
+    navNews: "الأخبار",
+    navAbout: "من نحن",
+    eyebrow: "المعلومات بلا حدود",
+    heroTitle: 'افهم العالم.<br><span>تابع ما يهم.</span>',
+    heroDescription: "الأخبار الدولية والأحداث الكبرى وأهم المعلومات من جميع أنحاء العالم في مكان واحد.",
+    heroButton: "اكتشف الأخبار",
+    newsTitle: "أخبار العالم",
+    newsSubtitle: "أحدث الأخبار الدولية",
+    searchPlaceholder: "ابحث عن خبر...",
+    all: "الكل",
+    world: "العالم",
+    europe: "أوروبا",
+    africa: "أفريقيا",
+    middleEast: "الشرق الأوسط",
+    loading: "جارٍ تحميل الأخبار...",
+    loadingTitle: "جارٍ التحميل",
+    loadingDescription: "يرجى الانتظار بضع ثوانٍ.",
+    noNewsTitle: "لم يتم العثور على أخبار",
+    noNewsDescription: "جرّب البحث أو التصنيف مرة أخرى.",
+    errorTitle: "تعذر تحميل الأخبار",
+    errorDescription: "تأكد من تشغيل خادم WorldScope ثم حاول مرة أخرى.",
+    readMore: "اقرأ المقال ←",
+    source: "المصدر",
+    footerText: "المعلومات بلا حدود.",
+    results: "خبر معروض",
+    noImage: "الصورة غير متوفرة"
+  }
+};
+
+let currentLanguage = localStorage.getItem("worldscope-language") || "fr";
+let currentRegion = "all";
+let allNews = [];
+
+const newsGrid = document.getElementById("newsGrid");
+const searchInput = document.getElementById("searchInput");
+const statusText = document.getElementById("statusText");
+const languageSelect = document.getElementById("language");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function t(key) {
+  return translations[currentLanguage]?.[key] || translations.fr[key] || key;
+}
+
+function applyLanguage() {
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir = currentLanguage === "ar" ? "rtl" : "ltr";
+  languageSelect.value = currentLanguage;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+    if (translations[currentLanguage][key]) {
+      element.innerHTML = translations[currentLanguage][key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+    const key = element.dataset.i18nPlaceholder;
+    element.placeholder = t(key);
+  });
+
+  renderCards();
+}
+
+languageSelect.addEventListener("change", () => {
+  currentLanguage = languageSelect.value;
+  localStorage.setItem("worldscope-language", currentLanguage);
+  applyLanguage();
+});
+
+document.querySelectorAll(".filter-button").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter-button").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    currentRegion = button.dataset.region;
+    renderCards();
+  });
+});
+
+searchInput.addEventListener("input", renderCards);
+
+function getNewsTitle(item) {
+  return item.title || item.headline || item.name || "World News";
+}
+
+function getNewsDescription(item) {
+  return item.description || item.summary || item.content || "";
+}
+
+function getNewsSource(item) {
+  if (typeof item.source === "string") return item.source;
+  if (item.source && item.source.name) return item.source.name;
+  return "WorldScope";
+}
+
+function getNewsImage(item) {
+  let image = item.image || item.image_url || item.urlToImage || "";
+
+  if (typeof image === "object" && image !== null) {
+    image = image.url || image.src || "";
+  }
+
+  return typeof image === "string" ? image.trim() : "";
+}
+
+function getNewsUrl(item) {
+  return item.url || item.link || item.article_url || "#";
+}
+
+function getNewsDate(item) {
+  const rawDate = item.publishedAt || item.published_at || item.date || "";
+
+  if (!rawDate) return "";
+
+  const date = new Date(rawDate);
+
+  if (Number.isNaN(date.getTime())) {
+    return String(rawDate);
+  }
+
+  return date.toLocaleDateString(
+    currentLanguage === "ar" ? "ar" :
+    currentLanguage === "en" ? "en-GB" : "fr-FR",
+    { day: "2-digit", month: "short", year: "numeric" }
+  );
+}
+
+function getNewsRegion(item) {
+  const value = (
+    item.region ||
+    item.category ||
+    item.country ||
+    item.area ||
+    ""
+  ).toString().toLowerCase();
+
+  if (
+    value.includes("africa") ||
+    value.includes("afrique") ||
+    value.includes("tunisia") ||
+    value.includes("tunisie") ||
+    value.includes("morocco") ||
+    value.includes("maroc") ||
+    value.includes("algeria") ||
+    value.includes("algérie") ||
+    value.includes("egypt") ||
+    value.includes("égypte")
+  ) {
+    return "africa";
+  }
+
+  if (
+    value.includes("middle") ||
+    value.includes("orient") ||
+    value.includes("palestin") ||
+    value.includes("israel") ||
+    value.includes("iran") ||
+    value.includes("iraq") ||
+    value.includes("syria") ||
+    value.includes("syrie") ||
+    value.includes("lebanon") ||
+    value.includes("liban") ||
+    value.includes("gaza")
+  ) {
+    return "middle-east";
+  }
+
+  if (
+    value.includes("europe") ||
+    value.includes("france") ||
+    value.includes("germany") ||
+    value.includes("allemagne") ||
+    value.includes("ukraine") ||
+    value.includes("britain") ||
+    value.includes("royaume")
+  ) {
+    return "europe";
+  }
+
+  return "world";
+}
+
+function createPlaceholder() {
+  const placeholder = document.createElement("div");
+  placeholder.className = "image-placeholder";
+  placeholder.textContent = "🌍";
+  return placeholder;
+}
+
+function renderCards() {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  const filteredNews = allNews.filter(item => {
+    const title = getNewsTitle(item);
+    const description = getNewsDescription(item);
+    const source = getNewsSource(item);
+
+    const searchableText = `${title} ${description} ${source}`.toLowerCase();
+
+    const matchesSearch = searchableText.includes(searchTerm);
+    const matchesRegion =
+      currentRegion === "all" ||
+      getNewsRegion(item) === currentRegion;
+
+    return matchesSearch && matchesRegion;
+  });
+
+  newsGrid.innerHTML = "";
+
+  if (filteredNews.length === 0) {
+    const message = document.createElement("div");
+    message.className = "message";
+
+    const title = document.createElement("strong");
+    title.textContent = t("noNewsTitle");
+
+    const description = document.createElement("span");
+    description.textContent = t("noNewsDescription");
+
+    message.append(title, description);
+    newsGrid.appendChild(message);
+
+    statusText.textContent = `0 ${t("results")}`;
+    return;
+  }
+
+  filteredNews.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "news-card";
+
+    const imageContainer = document.createElement("div");
+    imageContainer.className = "news-image";
+
+    const imageUrl = getNewsImage(item);
+
+    if (imageUrl) {
+      const image = document.createElement("img");
+      image.src = imageUrl;
+      image.alt = getNewsTitle(item);
+      image.loading = "lazy";
+      image.referrerPolicy = "no-referrer";
+
+      image.addEventListener("error", () => {
+        image.remove();
+        imageContainer.innerHTML = "";
+        imageContainer.appendChild(createPlaceholder());
+      });
+
+      image.addEventListener("load", () => {
+        imageContainer.classList.add("image-loaded");
+      });
+
+      imageContainer.appendChild(image);
+    } else {
+      imageContainer.appendChild(createPlaceholder());
+    }
+
+    const content = document.createElement("div");
+    content.className = "news-content";
+
+    const meta = document.createElement("div");
+    meta.className = "news-meta";
+
+    const category = document.createElement("span");
+    category.className = "news-category";
+    category.textContent = item.category || getNewsRegion(item).replace("-", " ");
+
+    const date = document.createElement("span");
+    date.className = "news-date";
+    date.textContent = getNewsDate(item);
+
+    meta.append(category, date);
+
+    const title = document.createElement("h3");
+    title.className = "news-title";
+    title.textContent = getNewsTitle(item);
+
+    const description = document.createElement("p");
+    description.className = "news-description";
+    description.textContent = getNewsDescription(item);
+
+    const source = document.createElement("p");
+    source.className = "news-date";
+    source.style.marginBottom = "14px";
+    source.textContent = `${t("source")}: ${getNewsSource(item)}`;
+
+    const link = document.createElement("a");
+    link.className = "read-more";
+    link.href = getNewsUrl(item);
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = t("readMore");
+
+    content.append(meta, title);
+
+    if (description.textContent) {
+      content.appendChild(description);
+    }
+
+    content.append(source, link);
+    card.append(imageContainer, content);
+    newsGrid.appendChild(card);
+  });
+
+  statusText.textContent = `${filteredNews.length} ${t("results")}`;
+}
+
+async function loadNews() {
+  statusText.textContent = t("loading");
+
+  try {
+    const response = await fetch("/api/news", {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Accepte plusieurs formats possibles de réponse de l'API.
+    if (Array.isArray(data)) {
+      allNews = data;
+    } else if (Array.isArray(data.news)) {
+      allNews = data.news;
+    } else if (Array.isArray(data.articles)) {
+      allNews = data.articles;
+    } else if (Array.isArray(data.results)) {
+      allNews = data.results;
+    } else {
+      allNews = [];
+    }
+
+    renderCards();
+
+    if (allNews.length === 0) {
+      statusText.textContent = t("noNewsDescription");
+    }
+  } catch (error) {
+    console.error("Erreur de chargement WorldScope :", error);
+
+    newsGrid.innerHTML = "";
+
+    const message = document.createElement("div");
+    message.className = "message";
+
+    const title = document.createElement("strong");
+    title.textContent = t("errorTitle");
+
+    const description = document.createElement("span");
+    description.textContent = t("errorDescription");
+
+    message.append(title, description);
+    newsGrid.appendChild(message);
+
+    statusText.textContent = t("errorTitle");
+  }
+}
+
+applyLanguage();
+loadNews();
+
+// Actualiser les actualités toutes les 5 minutes.
+setInterval(loadNews, 5 * 60 * 1000);
+</script>
+
+</body>
+</html>
