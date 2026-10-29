@@ -7,6 +7,13 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname));
 
+
+app.get("/sitemap.xml", (req, res) => {
+  res.type("application/xml");
+  res.sendFile(__dirname + "/public/sitemap.xml");
+});
+
+
 function getRSS(url) {
   return new Promise((resolve, reject) => {
     https.get(url, {
